@@ -1,20 +1,20 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Ethio-Intl
 
-# Run and deploy your AI Studio app
+[![Vercel](https://vercel.com/button)](https://ethio-intl-documentation.vercel.app/)
 
-This contains everything you need to run your app locally.
+Ethio-Intl is a lightweight internationalization toolkit for Ethiopian languages, focusing on **accurate Amharic transliteration**, Ethiopian calendar conversions, numeral mappings, and developer-friendly APIs. It provides ready-to-use **React components**, hooks, and utilities to seamlessly integrate Ethiopian language support into your projects.
 
-View your app in AI Studio: https://ai.studio/apps/drive/18eZiHXDbQ8SOS9qFKpifVfj2yAzujoVW
+---
 
-## Run Locally
+## 🚀 Live Demo
 
-**Prerequisites:**  Node.js
+Explore the documentation and live examples here: [Ethio-Intl Documentation](https://ethio-intl-documentation.vercel.app/)
 
+---
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 📦 Installation
+
+Install the library via npm:
+
+```bash
+npm install ethio-intl

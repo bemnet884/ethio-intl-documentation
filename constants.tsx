@@ -340,64 +340,158 @@ function MyComponent() {
       </h1>
 
       <p className="text-lg text-gray-600 mb-8">
-        We welcome contributions from the community and appreciate your interest in improving
-        <strong> Ethio-Intl</strong>. Every contribution—whether code, documentation, or feedback—
-        helps make Ethiopian language support more accessible and reliable for developers worldwide.
+        Contributions are welcome from the community. Your input—whether through code, documentation, or feedback—
+        helps enhance Ethiopian language support and improves reliability for developers using <strong>Ethio-Intl</strong>.
       </p>
 
-      <h2 className="text-2xl font-bold text-gray-900 mb-4">
-        Ways to Contribute
-      </h2>
-
-      <ul className="space-y-3">
-        <li>
-          <strong>Bug Reports</strong> — Report bugs or unexpected behavior by opening an issue on GitHub.
-          Please include clear reproduction steps and expected behavior.
-        </li>
-        <li>
-          <strong>Feature Requests</strong> — Propose new features, enhancements, or language support
-          ideas through GitHub Discussions or Issues.
-        </li>
-        <li>
-          <strong>Documentation Improvements</strong> — Help refine guides, examples, or API references
-          to make the project easier to understand.
-        </li>
-        <li>
-          <strong>Code Contributions</strong> — Fix bugs, improve performance, add tests, or implement
-          new features aligned with the project roadmap.
-        </li>
-      </ul>
-
-      <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">
-        Development Setup
-      </h2>
-
-      <p className="text-gray-600 mb-4">
-        Follow the steps below to set up the project locally for development and testing.
-      </p>
-
+      <h2 className="text-2xl font-bold text-gray-900 mb-4">Getting Started</h2>
       <pre className="bg-gray-100 p-6 rounded-xl text-sm overflow-x-auto">
         {`# Clone the repository
-git clone https://github.com/your-org/ethio-intl.git
-
-# Navigate into the project
-cd ethio-intl
+git clone https://github.com/BeamSol/Ethio-Intl
+cd Ethio-Intl
 
 # Install dependencies
 npm install
 
 # Run tests
-npm test`}
+npm test
+
+# Start development
+npm run dev
+
+# Build for production
+npm run build`}
       </pre>
 
-      <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mt-6">
-        <p className="text-sm text-blue-800">
-          <strong>Tip:</strong> Before submitting a pull request, ensure your changes follow the
-          existing code style and that all tests pass successfully.
-        </p>
-      </div>
+      <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Project Structure</h2>
+      <pre className="bg-gray-100 p-6 rounded-xl text-sm overflow-x-auto">
+        {`src/
+├── examples/           # Usage examples
+├── hooks/              # React hooks (useEthioIntl, useTransliterate)
+├── localization/       # i18n provider and utilities
+├── transliteration/    # Amharic transliteration logic
+├── utils/              # Ethiopian calendar and numeral utilities
+└── locales/            # Translation files (en.json, am.json, etc.)`}
+      </pre>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Development Workflow</h2>
+      <ol className="list-decimal list-inside space-y-4">
+        <li>
+          <strong>Select an Issue</strong> — Review open issues on{' '}
+          <a href="https://github.com/your-org/ethio-intl/issues" className="text-blue-600 underline">
+            GitHub
+          </a> and comment if you plan to work on it.
+        </li>
+        <li>
+          <strong>Create a Branch</strong>
+          <pre className="bg-gray-100 p-4 rounded text-sm overflow-x-auto">
+            {`git checkout -b feature/your-feature-name
+# or
+git checkout -b fix/issue-number`}
+          </pre>
+        </li>
+        <li>
+          <strong>Implement Changes</strong> — Adhere to the existing code style, add tests, update documentation, and ensure TypeScript types are correct.
+        </li>
+        <li>
+          <strong>Test Your Changes</strong>
+          <pre className="bg-gray-100 p-4 rounded text-sm overflow-x-auto">
+            {`npm test
+npm run type-check
+npm run build
+# Optional manual testing
+python -m http.server 5500
+# Open http://127.0.0.1:5500/demo.html`}
+          </pre>
+        </li>
+        <li>
+          <strong>Commit Your Changes</strong>
+          <pre className="bg-gray-100 p-4 rounded text-sm overflow-x-auto">
+            {`git add .
+git commit -m "feat: add new feature description"`}
+          </pre>
+          <p className="text-sm text-gray-600 mt-2">
+            Use conventional commit prefixes: <strong>feat:</strong> new features, <strong>fix:</strong> bug fixes,
+            <strong>docs:</strong> documentation, <strong>test:</strong> tests, <strong>refactor:</strong> refactoring.
+          </p>
+        </li>
+        <li>
+          <strong>Submit a Pull Request</strong> — Push your branch to GitHub, create a PR with a clear description, reference related issues, and ensure all checks pass.
+        </li>
+      </ol>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Code Guidelines</h2>
+      <ul className="list-disc list-inside space-y-2">
+        <li>
+          <strong>TypeScript:</strong> Use proper types and interfaces; avoid using <code>any</code>.
+        </li>
+        <li>
+          <strong>React:</strong> Use functional components and hooks; follow best practices.
+        </li>
+        <li>
+          <strong>Testing:</strong> Write unit tests, maintain coverage above 80%, and handle success and error cases.
+        </li>
+        <li>
+          <strong>Documentation:</strong> Keep README and API docs updated; include examples for new features.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Adding Languages</h2>
+      <ol className="list-decimal list-inside space-y-2">
+        <li>Create <code>src/locales/[lang].json</code> following the existing JSON structure.</li>
+        <li>Add the new language to examples and documentation.</li>
+        <li>Test thoroughly with all components.</li>
+      </ol>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Adding Features</h2>
+      <p className="text-gray-600 mb-4">
+        When adding new i18n, transliteration, or utility features, follow these guidelines:
+      </p>
+      <ul className="list-disc list-inside space-y-2">
+        <li>
+          <strong>i18n Features:</strong> Update <code>src/localization/EthioProvider.tsx</code>, export from <code>useEthioIntl.ts</code>,
+          update types, add tests, and update documentation.
+        </li>
+        <li>
+          <strong>Transliteration Features:</strong> Update <code>amharicMap.ts</code> and <code>useTransliterate.ts</code>, add tests.
+        </li>
+        <li>
+          <strong>Utilities:</strong> Add new functions in <code>src/utils/</code>, export from <code>index.ts</code>, and add tests and documentation.
+        </li>
+      </ul>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Reporting Bugs</h2>
+      <p className="text-gray-600 mb-4">
+        Use <a href="https://github.com/your-org/ethio-intl/issues" className="text-blue-600 underline">GitHub Issues</a>.
+        Provide clear reproduction steps, relevant environment information, and screenshots if necessary.
+      </p>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Documentation</h2>
+      <ul className="list-disc list-inside space-y-2">
+        <li>Keep README.md and API documentation up to date.</li>
+        <li>Add usage examples for new features.</li>
+        <li>Maintain an up-to-date changelog.</li>
+      </ul>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Code of Conduct</h2>
+      <ul className="list-disc list-inside space-y-2">
+        <li>Be respectful and inclusive.</li>
+        <li>Provide constructive feedback.</li>
+        <li>Support newcomers in learning and contributing.</li>
+        <li>Maintain professional communication at all times.</li>
+      </ul>
+
+      <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Getting Help</h2>
+      <p className="text-gray-600 mb-4">
+        Review existing issues and documentation, ask questions in GitHub Discussions, or join the community chat for assistance.
+      </p>
+
+      <p className="text-lg text-gray-600 mt-6">
+        Thank you for contributing to <strong>Ethio-Intl</strong>.
+      </p>
     </div>
   ),
+
   'api': (
     <div className="prose max-w-none">
       <h1 className="text-4xl font-extrabold text-gray-900 mb-6">

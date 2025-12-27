@@ -398,5 +398,151 @@ npm test`}
       </div>
     </div>
   ),
+  'api': (
+    <div className="prose max-w-none">
+      <h1 className="text-4xl font-extrabold text-gray-900 mb-6">
+        API Reference
+      </h1>
 
+      <p className="text-lg text-gray-600 mb-8">
+        Complete API documentation for <strong>Ethio-Intl</strong> components, hooks, utilities, and localization.
+      </p>
+
+      {/* SmartInput Component */}
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">SmartInput Component</h2>
+
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">Props</h3>
+        <pre className="bg-gray-100 p-5 rounded-lg overflow-x-auto text-sm mb-6">
+          {`interface SmartInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'> {
+  onChange?: (latinValue: string, transliteratedValue: string) => void;
+  value?: string;
+  transliterate?: boolean;
+  placeholder?: string;
+  className?: string;
+  onTransliteratedChange?: (transliteratedValue: string) => void;
+}`}
+        </pre>
+
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">Example Usage</h3>
+        <pre className="bg-gray-50 p-5 rounded-lg overflow-x-auto text-sm">
+          {`import { SmartInput } from 'ethio-intl';
+
+<SmartInput
+  placeholder="Type in English..."
+  onChange={(latin, amharic) => {
+    console.log('Latin:', latin);
+    console.log('Amharic:', amharic);
+  }}
+  className="my-input"
+/>`}
+        </pre>
+      </section>
+
+      {/* useTransliterate Hook */}
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">useTransliterate Hook</h2>
+
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">Parameters</h3>
+        <pre className="bg-gray-100 p-5 rounded-lg overflow-x-auto text-sm mb-4">
+          {`function useTransliterate(
+  initialValue?: string,
+  onTransliteratedChange?: (value: string) => void
+): UseTransliterateResult`}
+        </pre>
+
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">Return Type</h3>
+        <pre className="bg-gray-50 p-5 rounded-lg overflow-x-auto text-sm mb-4">
+          {`interface UseTransliterateResult {
+  displayValue: string;
+  latinValue: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+}`}
+        </pre>
+
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">Example Usage</h3>
+        <pre className="bg-gray-100 p-5 rounded-lg overflow-x-auto text-sm">
+          {`import { useTransliterate } from 'ethio-intl';
+
+function MyComponent() {
+  const { displayValue, onChange, onKeyDown } = useTransliterate('', (amharic) => {
+    console.log('Transliterated:', amharic);
+  });
+
+  return (
+    <input
+      value={displayValue}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+      placeholder="Type here..."
+    />
+  );
+}`}
+        </pre>
+      </section>
+
+      {/* Utilities */}
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">Utilities & Helpers</h2>
+
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">amharicMap</h3>
+        <p className="text-gray-600 mb-2">Mapping of English keys to Amharic characters.</p>
+        <pre className="bg-gray-50 p-5 rounded-lg overflow-x-auto text-sm mb-4">
+          {`import { amharicMap } from 'ethio-intl';
+
+console.log(amharicMap.h);
+// { ä: "ሀ", base: "ህ", a: "ሃ", u: "ሁ", i: "ሂ", e: "ሄ", o: "ሆ" }
+
+console.log(amharicMap['q'].wa); // "ቋ"`}
+        </pre>
+
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">reverseMap</h3>
+        <p className="text-gray-600 mb-2">Lookup from Amharic character back to English key.</p>
+        <pre className="bg-gray-100 p-5 rounded-lg overflow-x-auto text-sm mb-4">
+          {`import { reverseMap } from 'ethio-intl';
+
+console.log(reverseMap['ሁ']); // "h"
+console.log(reverseMap['ባ']); // "b"`}
+        </pre>
+
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">Ethiopian Numerals & Calendar</h3>
+        <pre className="bg-gray-50 p-5 rounded-lg overflow-x-auto text-sm mb-4">
+          {`import { toEthiopianNumerals, fromEthiopianNumerals, toEthiopianDate, fromEthiopianDate } from 'ethio-intl';
+
+console.log(toEthiopianNumerals(2025)); // "፳፻፳፭"
+console.log(fromEthiopianNumerals('፬፪'));   // 42
+
+const ethiopian = toEthiopianDate(new Date('2025-01-15'));
+// { year: 2017, month: 4, day: 7, monthName: 'Tahsas' }
+
+const gregorian = fromEthiopianDate(2017, 4, 7); // Date object`}
+        </pre>
+      </section>
+
+      {/* Localization */}
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">Localization</h2>
+        <p className="text-gray-600 mb-4">
+          Use <code>EthioProvider</code> and <code>useEthioIntl</code> to manage languages.
+        </p>
+        <pre className="bg-gray-100 p-5 rounded-lg overflow-x-auto text-sm">
+          {`import { EthioProvider, useEthioIntl } from 'ethio-intl';
+
+function App() {
+  return (
+    <EthioProvider language="am">
+      <MyComponent />
+    </EthioProvider>
+  );
+}
+
+function MyComponent() {
+  const { t, language } = useEthioIntl();
+  return <p>{t('welcome')} — Current language: {language}</p>;
+}`}
+        </pre>
+      </section>
+    </div>
+  ),
 };

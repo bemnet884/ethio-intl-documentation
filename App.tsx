@@ -11,6 +11,7 @@ const NAVIGATION: NavItem[] = [
   { id: 'transliteration-guide', label: 'Transliteration System' },
   { id: 'examples', label: 'Examples & Demos' },
   { id: 'contributing', label: 'Contributing' },
+  { id: 'api', label: 'API' },
 ];
 
 function App() {
